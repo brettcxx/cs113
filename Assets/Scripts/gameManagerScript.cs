@@ -90,8 +90,7 @@ public class gameManagerScript : MonoBehaviour
         playerPhaseAnim = playerPhaseCanvas.GetComponent<Animator>();
         playerPhaseText = playerPhaseCanvas.GetComponentInChildren<TextMeshProUGUI>();
         pathNodes = new List<Node>();
-        unitPathExists = false;
-
+        unitPathExists = false;       
       
         TMS = GetComponent<tileMapScript>();
     }
@@ -109,33 +108,25 @@ public class gameManagerScript : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            // if a building is selected
+            // if a building is selected, open the shop UI
             if (hit.transform.CompareTag("Building"))
             {
                 building = hit.transform.gameObject;
-                // if mouse left button is clicked
                 if (Input.GetMouseButtonDown(0))
                 {
-                    // if the unit on spawn point didn't occupy the building in this turn
                     if (building.GetComponent<Cell>().hasHolded == false)
                     {
-                        // if the player had occupied the building and the building is not the base
                         if (building.GetComponent<Cell>().owner == currentTeam + 1 && building.GetComponent<Cell>().isBase == false)
                         {
-                            // show the shop window
                             shopUI.SetActive(true);
                         }
                         else
                         {
-                            // get spawn point position
                             int buildingX = building.GetComponent<Cell>().spawnX;
                             int buildingY = building.GetComponent<Cell>().spawnY;
-                            // get the unit standing on the spawn point
                             GameObject unitNearBuilding = SpawnPointOccupied(buildingX, buildingY);
-                            // if there is a unit standing on the spawn point and it belongs to current player.
                             if (unitNearBuilding != null && unitNearBuilding.GetComponent<UnitScript>().teamNum == currentTeam)
                             {
-                                // show the occupy confirm window
                                 occupyUI.SetActive(true);
                                 occupier = unitNearBuilding;
                             }

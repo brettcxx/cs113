@@ -34,15 +34,11 @@ namespace MapTileGridCreator.Core
         // use for position where new units spawn
         public int spawnX;
         public int spawnY;
-        // income of the building
         public int income;
         public int owner = 0;
-        // turns needed to occupy the building
         public int Maxholdtime = 2;
         public int holdtime = 2;
-        // check if the unit on spawn point has already done the occupy action in current turn
         public bool hasHolded;
-        // check if the building is base
         public bool isBase = false;
 		#endregion
 
