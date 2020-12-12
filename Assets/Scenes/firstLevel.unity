@@ -46839,7 +46839,7 @@ MonoBehaviour:
   team1: {fileID: 533756626}
   team2: {fileID: 1943374290}
   Gold1: 2000
-  Gold2: 2500
+  Gold2: 2000
   income1: 0
   income2: 0
   shopUI: {fileID: 411776633}
